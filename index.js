@@ -13,6 +13,9 @@ app.use(fileUpload())
 
 app.use("/trip",require("./Routes/Trip"))
 app.use("/join",require("./Routes/Member"))
+app.get("/",(req ,res)=>{
+    res.send("hey")
+})
 
 app.listen(Port,()=>{
     console.log(`Listening to appp at port ${Port}`)

@@ -5,7 +5,7 @@ const fetchuser = require("../Fetchuser/Fetchuser")
 
 
 router.post("/enter",fetchuser, async (req,res)=>{
-    try {   const img = await req.files.image
+    try {   const img = req.files.image
            console.log(img)
            img.mv("public/bimg/" + img.name)
           const Blogent= await Blog.create({

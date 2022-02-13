@@ -4,7 +4,7 @@ const router = express.Router()
 const Token = "HaayeMeriDiwaliKhatamHoGyi"
 const { body, validationResult } = require("express-validator")
 const Member = require("../Modals/Member")
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const fetchuser = require("../Fetchuser/Fetchuser")
 const fs = require("fs")
@@ -127,7 +127,7 @@ router.post("/avatar", fetchuser, async (req, res) => {
                     }
                 })
             }
-            const img = await req.files.dp;
+            const img = req.files.dp;
             console.log(img)
             const imagename=Date.now()+img.name
             console.log(imagename)

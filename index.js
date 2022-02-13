@@ -1,9 +1,9 @@
-const express= require("express")
+const express = require("express")
 const ConnectionSetup = require("./database")
 const cors = require("cors")
 const fileUpload = require('express-fileupload')
-const app=express()
-const Port= process.env.PORT || 8080
+const app = express()
+const Port = 8080
 
 app.use(express.json())
 app.use(cors())

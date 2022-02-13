@@ -127,7 +127,7 @@ router.post("/avatar", fetchuser, async (req, res) => {
                     }
                 })
             }
-            const img = await req.files.dp;
+            const img = req.files.dp;
             console.log(img)
             const imagename=Date.now()+img.name
             console.log(imagename)

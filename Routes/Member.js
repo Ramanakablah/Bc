@@ -115,21 +115,19 @@ router.post("/avatar", fetchuser, async (req, res) => {
     try {
         const Memb = await Member.findById(req.user.id)
         if (Memb) {
-            const path = Memb.avatar
-            if(path!== "Image")
-            {
-                fs.unlinkSync(`./public/pimg/${path}`,(err)=>{
-                    if(err){
+            if (Memb.avatar != "Image") {
+                fs.unlinkSync(`./public/pimg/${path}`, (err) => {
+                    if (err) {
                         console.log(err)
                     }
-                    else{
+                    else {
                         console.log("Deleted Succesfully")
                     }
                 })
             }
             const img = req.files.dp;
             console.log(img)
-            const imagename=Date.now()+img.name
+            const imagename = Date.now() + img.name
             console.log(imagename)
             await img.mv("public/pimg/" + imagename)
             const UMemb = await Member.findByIdAndUpdate(req.user.id, { $set: { avatar: `${imagename}` } }, { new: true })
